@@ -7,6 +7,7 @@ var energy = document.getElementById("energy");
 var score = 0;
 var scoreboard = document.getElementById("score");
 
+// Game log and controller variables
 var log = document.getElementById("log");
 var sword_button = document.getElementById("sword_button");
 var shield_button = document.getElementById("shield_button");
@@ -230,8 +231,16 @@ function check() {
     }
   }
   if (health_pts <= 0) {
-    log.innerHTML += "<li>Player killed by lvl. " + lvl + " enemy.</li>";
+    log.innerHTML += "<li><b>Player killed by lvl. " + lvl + " enemy (score: " + score + ").</b></li>";
     alert("You died from a lvl. " + lvl + " enemy.\nYour score was " + score + ". Good luck next time!");
+
+    var hiddenElement = document.createElement('a');
+    var date = new Date();
+    hiddenElement.href = 'data:attachment/text,' + encodeURI("<!DOCTYPE html><html><body><h1>Score for " + date + "</h1><ol>" + log.innerHTML + "</ol><br><em><a href='https://hircinus.github.io/fighter/'>Simple fighting game</a> by Jacob Alfahad, 2019</em></body></html>");
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'score.html';
+    hiddenElement.click();
+
     location.reload();
   }
   else {}
