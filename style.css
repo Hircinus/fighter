@@ -1,3 +1,28 @@
+body {
+  overflow-x: hidden
+}
+html {
+  background-image: linear-gradient(to bottom, white, lightgrey);
+  width: 100%;
+  height: 100%;
+}
 ul {
   list-style-type: none
+}
+ul > li {
+  margin: 5px
+}
+hr {
+  border-radius: 50px;
+  background-color: blue;
+  border: outset darkblue 2px;
+  height: 5px
+}
+a {
+  color: blue;
+  text-decoration: none
+}
+a:hover {
+  color: darkblue;
+  text-decoration: none
 }

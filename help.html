@@ -5,9 +5,10 @@
     <link href="style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <a href="index.html">Back home</a>
+    <a href="index.html">[<] Back home</a>
     <h1>How does this work?</h1>
     <hr>
+    <p>Just want the code? Find it in our <a href="https://github.com/Hircinus/fighter/">GitHub repo!</a></p>
     <h2>Basic idea</h2>
     <p>You are the fighter. They are the enemy. That's the objective.
       <br>
@@ -23,6 +24,25 @@
       <em>Please bear in mind that this game is not yet fully complete, but it is functional.</em>
     </p>
       <h3>Sword</h3>
-      <p>The sword ability deals damage to foes and takes away 10 energy points.</p>
+      <p>The sword ability deals 20 damage to foes and takes away 10 energy points from you.</p>
+      <h3>Shield</h3>
+      <p>The shield ability recovers 5 energy points for you and quarters the damage your enemy inflicts while you shield.</p>
+      <h3>Blaster</h3>
+      <p>The blaster ability deals 25 damage to foes and takes away 30 energy points from you. (See "Detailed game mechanics and calculations" for why this might seem wrong.)</p>
+      <h3>Heal</h3>
+      <p>The heal ability recovers 5 health for you but takes 10 energy. Enemies cannot hurt you while you heal.</p>
+    <h2>Detailed game mechanics and calculations</h2>
+      <h3>Player health</h3>
+      <p>Player health is set at the beginning of the game to "100". It will decrease from enemies' attacks until it reaches zero, which is game over.
+        <br>See "Enemy attack damage" for more information.
+      </p>
+      <h3>Player energy</h3>
+      <p>Player energy, like health, is set to "100" at the beginning. It decreases with every ability the player uses (except shield, which recovers energy).
+        <br>Without energy, the player cannot do any action except shield.
+      </p>
+      <h3>Enemy level</h3>
+      <p>The foe's level ("lvl.") is determined using a random number generator that creates an integer between 1 and 10.
+        <br>Many other calculations rely on this determined number, which changes after each time you defeat the previous enemy.
+      </p>
   </body>
 </html>
