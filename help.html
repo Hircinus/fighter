@@ -8,7 +8,9 @@
     <a href="index.html">[<] Back home</a>
     <h1>How does this work?</h1>
     <hr>
-    <p>Just want the code? Find it in our <a href="https://github.com/Hircinus/fighter/">GitHub repo!</a></p>
+    <p>Just want the code? Find it in our <a href="https://github.com/Hircinus/fighter/">GitHub repo!</a>
+      <br>Or, you can check out the <a href="combat.js">JS file</a> directly.
+    </p>
     <h2>Basic idea</h2>
     <p>You are the fighter. They are the enemy. That's the objective.
       <br>
@@ -28,21 +30,34 @@
       <h3>Shield</h3>
       <p>The shield ability recovers 5 energy points for you and quarters the damage your enemy inflicts while you shield.</p>
       <h3>Blaster</h3>
-      <p>The blaster ability deals 25 damage to foes and takes away 30 energy points from you. (See "Detailed game mechanics and calculations" for why this might seem wrong.)</p>
+      <p>The blaster ability deals 25 damage to foes and takes away 30 energy points from you.
+        <br>However, when using the blaster, your enemy's attack damage is halved.
+      </p>
       <h3>Heal</h3>
       <p>The heal ability recovers 5 health for you but takes 10 energy. Enemies cannot hurt you while you heal.</p>
     <h2>Detailed game mechanics and calculations</h2>
       <h3>Player health</h3>
       <p>Player health is set at the beginning of the game to "100". It will decrease from enemies' attacks until it reaches zero, which is game over.
-        <br>See "Enemy attack damage" for more information.
+        <br>After each defeated foe, you regain 40 health (to a maximum of 100).
       </p>
       <h3>Player energy</h3>
       <p>Player energy, like health, is set to "100" at the beginning. It decreases with every ability the player uses (except shield, which recovers energy).
         <br>Without energy, the player cannot do any action except shield.
+        <br>After each defeated foe, you regain 20 energy (to a maximum of 100).
       </p>
       <h3>Enemy level</h3>
       <p>The foe's level ("lvl.") is determined using a random number generator that creates an integer between 1 and 10.
         <br>Many other calculations rely on this determined number, which changes after each time you defeat the previous enemy.
+      </p>
+      <h3>Enemy attack damage</h3>
+      <p>The enemy's attack damage is mainly a random integer between 1 and 5, which is then multiplied by the foe's level.
+        <br>The other elements that affect this are the blaster and shield which half and quarter this value.
+      </p>
+      <h3>Enemy accuracy</h3>
+      <p>The enemy's accuracy is a fixed percentage of 60%. The only exception is with the blaster ability, which decreases it to 40%.
+      </p>
+      <h3>Score</h3>
+      <p>Your score is simply the sum of the levels of all the enemies you defeat.
       </p>
   </body>
 </html>

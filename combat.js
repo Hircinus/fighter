@@ -7,6 +7,8 @@ var energy = document.getElementById("energy");
 var score = 0;
 var scoreboard = document.getElementById("score");
 
+var log = document.getElementById("log");
+
 // Enemy variables
 var lvl = Math.floor(Math.random() * 10) + 1;
 var lvl_holder = document.getElementById("lvl");
@@ -43,24 +45,36 @@ function sword() {
     var player_dmg = (Math.floor(Math.random() * 5) + 1) * lvl;
     health_pts -= player_dmg;
   }
+  else {
+    var player_dmg = 0;
+  }
   enemy_health_pts -= 20;
   energy_pts -= 10;
   // CLEAR
   health.innerHTML = health_pts;
   energy.innerHTML = energy_pts;
   enemy_health.innerHTML = enemy_health_pts;
+  log.innerHTML += "<li>Player used Sword : lost " + player_dmg + " health ; lost 10 energy ; dealt 20 damage.</li>";
 }
 // Executes shield action
 function shield() {
+  if (energy_pts > 95) {
+    alert("You cannot add any more energy.");
+    return;
+  }
   var ai_attack = Math.random();
   if (ai_attack > 0.4) {
     var player_dmg = Math.floor((((Math.random() * 5) + 1) * lvl) / 4);
     health_pts -= player_dmg;
   }
+  else {
+    var player_dmg = 0;
+  }
   energy_pts += 5;
   // CLEAR
   health.innerHTML = health_pts;
   energy.innerHTML = energy_pts;
+  log.innerHTML += "<li>Player used Shield : lost " + player_dmg + " health ; gained 10 energy ; dealt 0 damage.</li>";
 }
 // Executes blaster action
 function blaster() {
@@ -70,8 +84,11 @@ function blaster() {
   }
   var ai_attack = Math.random();
   if (ai_attack > 0.6) {
-    var player_dmg = ((Math.floor(Math.random() * 5) + 1) * lvl) / 4;
+    var player_dmg = Math.floor(((Math.random() * 5) + 1) * lvl) / 2;
     health_pts -= player_dmg;
+  }
+  else {
+    var player_dmg = 0;
   }
   enemy_health_pts -= 25;
   energy_pts -= 30;
@@ -79,6 +96,7 @@ function blaster() {
   health.innerHTML = health_pts;
   energy.innerHTML = energy_pts;
   enemy_health.innerHTML = enemy_health_pts;
+  log.innerHTML += "<li>Player used Blaster : lost " + player_dmg + " health ; lost 30 energy ; dealt 25 damage.</li>";
 }
 // Executes heal action
 function heal() {
@@ -86,17 +104,23 @@ function heal() {
     alert("You don't have enough energy to do this.");
     return;
   }
+  if (health_pts > 95) {
+    alert("You cannot heal any more.");
+    return;
+  }
   health_pts += 5;
   energy_pts -= 10;
   // CLEAR
   health.innerHTML = health_pts;
   energy.innerHTML = energy_pts;
+  log.innerHTML += "<li>Player used Heal : gained 5 health ; lost 10 energy ; dealt 0 damage.</li>";
 }
 // Checks enemy health and player health and acts accordingly
 function check() {
   if (enemy_health_pts <= 0) {
-    score += 1;
+    score += lvl;
     scoreboard.innerHTML = score;
+    log.innerHTML += "<li>Player defeated lvl. " + lvl + " enemy : score + " + lvl + ".</li>";
     lvl = Math.floor(Math.random() * 10) + 1;
     lvl_holder.innerHTML = lvl;
     enemy_health_pts = 10 * lvl;
@@ -117,7 +141,8 @@ function check() {
     energy.innerHTML = energy_pts;
   }
   if (health_pts <= 0) {
-    alert("You died.\nYour score was " + score + ".");
+    log.innerHTML += "<li>Player killed by lvl. " + lvl + " enemy.</li>";
+    alert("You died from a lvl. " + lvl + " enemy.\nYour score was " + score + ". Good luck next time!");
     location.reload();
   }
   else {}
