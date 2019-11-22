@@ -8,6 +8,10 @@ var score = 0;
 var scoreboard = document.getElementById("score");
 
 var log = document.getElementById("log");
+var sword_button = document.getElementById("sword_button");
+var shield_button = document.getElementById("shield_button");
+var blaster_button = document.getElementById("blaster_button");
+var heal_button = document.getElementById("heal_button");
 
 // Enemy variables
 var lvl = Math.floor(Math.random() * 10) + 1;
@@ -29,7 +33,21 @@ function initialize() {
     name_holder.innerHTML = "Person";
   }
   health.innerHTML = health_pts;
+  health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
+  if (health_pts >= 60) {
+    health.style.color = "white";
+  }
+  else {
+    health.style.color = "black";
+  }
   energy.innerHTML = energy_pts;
+  energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
+  if (energy_pts >= 60) {
+    energy.style.color = "white";
+  }
+  else {
+    energy.style.color = "black";
+  }
   enemy_health.innerHTML = enemy_health_pts;
   lvl_holder.innerHTML = lvl;
   scoreboard.innerHTML = score;
@@ -52,7 +70,21 @@ function sword() {
   energy_pts -= 10;
   // CLEAR
   health.innerHTML = health_pts;
+  health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
+  if (health_pts >= 60) {
+    health.style.color = "white";
+  }
+  else {
+    health.style.color = "black";
+  }
   energy.innerHTML = energy_pts;
+  energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
+  if (energy_pts >= 60) {
+    energy.style.color = "white";
+  }
+  else {
+    energy.style.color = "black";
+  }
   enemy_health.innerHTML = enemy_health_pts;
   log.innerHTML += "<li>Player used Sword : lost " + player_dmg + " health ; lost 10 energy ; dealt 20 damage.</li>";
 }
@@ -73,7 +105,21 @@ function shield() {
   energy_pts += 5;
   // CLEAR
   health.innerHTML = health_pts;
+  health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
+  if (health_pts >= 60) {
+    health.style.color = "white";
+  }
+  else {
+    health.style.color = "black";
+  }
   energy.innerHTML = energy_pts;
+  energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
+  if (energy_pts >= 60) {
+    energy.style.color = "white";
+  }
+  else {
+    energy.style.color = "black";
+  }
   log.innerHTML += "<li>Player used Shield : lost " + player_dmg + " health ; gained 10 energy ; dealt 0 damage.</li>";
 }
 // Executes blaster action
@@ -94,7 +140,21 @@ function blaster() {
   energy_pts -= 30;
   // CLEAR
   health.innerHTML = health_pts;
+  health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
+  if (health_pts >= 60) {
+    health.style.color = "white";
+  }
+  else {
+    health.style.color = "black";
+  }
   energy.innerHTML = energy_pts;
+  energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
+  if (energy_pts >= 60) {
+    energy.style.color = "white";
+  }
+  else {
+    energy.style.color = "black";
+  }
   enemy_health.innerHTML = enemy_health_pts;
   log.innerHTML += "<li>Player used Blaster : lost " + player_dmg + " health ; lost 30 energy ; dealt 25 damage.</li>";
 }
@@ -112,7 +172,21 @@ function heal() {
   energy_pts -= 10;
   // CLEAR
   health.innerHTML = health_pts;
+  health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
+  if (health_pts >= 60) {
+    health.style.color = "white";
+  }
+  else {
+    health.style.color = "black";
+  }
   energy.innerHTML = energy_pts;
+  energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
+  if (energy_pts >= 60) {
+    energy.style.color = "white";
+  }
+  else {
+    energy.style.color = "black";
+  }
   log.innerHTML += "<li>Player used Heal : gained 5 health ; lost 10 energy ; dealt 0 damage.</li>";
 }
 
@@ -139,7 +213,21 @@ function check() {
       energy_pts = 100;
     }
     health.innerHTML = health_pts;
+    health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
+    if (health_pts >= 60) {
+      health.style.color = "white";
+    }
+    else {
+      health.style.color = "black";
+    }
     energy.innerHTML = energy_pts;
+    energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
+    if (energy_pts >= 60) {
+      energy.style.color = "white";
+    }
+    else {
+      energy.style.color = "black";
+    }
   }
   if (health_pts <= 0) {
     log.innerHTML += "<li>Player killed by lvl. " + lvl + " enemy.</li>";
@@ -158,24 +246,28 @@ function checkKey(e) {
     if (e.keyCode == '49') {
         // 1
         sword();
+        sword_button.focus ();
         check();
         return;
     }
     else if (e.keyCode == '50') {
         // 2
         shield();
+        shield_button.focus ();
         check();
         return;
     }
     else if (e.keyCode == '51') {
        // 3
        blaster();
+       blaster_button.focus ();
        check();
        return;
     }
     else if (e.keyCode == '52') {
        // 4
        heal();
+       heal_button.focus ();
        check();
        return;
     }
