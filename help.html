@@ -10,32 +10,58 @@
     <hr>
     <p>Just want the code? Find it in our <a href="https://github.com/Hircinus/fighter/">GitHub repo!</a>
       <br>Or, you can check out the <a href="combat.js">JS file</a> directly.
+      <br>Read the <a href="license.txt">license</a> for this game (MIT).
+      <br><em>Copyright (c) 2019 Jacob Alfahad</em>
     </p>
     <h2>Basic idea</h2>
     <p>You are the fighter. They are the enemy. That's the objective.
       <br>
-      Beat as many enemies as you can (with some strategy, of course) before losing all your health.
-    <h2>Deeper look into the mechanics</h2>
+      Pick a name and beat as many enemies as you can (with some strategy, of course) before losing all your health.
+    </p>
+    <h2>What can you do?</h2>
     <p>During your encounters, you have four available options to choose from:
       <ol>
-        <li>Sword</li>
-        <li>Shield</li>
-        <li>Blaster</li>
-        <li>Heal</li>
+        <li>Sword [1]</li>
+        <li>Shield [2]</li>
+        <li>Blaster [3]</li>
+        <li>Heal [4]</li>
       </ol>
-      <em>Please bear in mind that this game is not yet fully complete, but it is functional.</em>
+      <em>The number in square brackets is the key you can press to activate each ability.</em>
     </p>
-      <h3>Sword</h3>
-      <p>The sword ability deals 20 damage to foes and takes away 10 energy points from you.</p>
-      <h3>Shield</h3>
-      <p>The shield ability recovers 5 energy points for you and quarters the damage your enemy inflicts while you shield.</p>
-      <h3>Blaster</h3>
-      <p>The blaster ability deals 25 damage to foes and takes away 30 energy points from you.
-        <br>However, when using the blaster, your enemy's attack damage is halved.
-      </p>
-      <h3>Heal</h3>
-      <p>The heal ability recovers 5 health for you but takes 10 energy. Enemies cannot hurt you while you heal.</p>
     <h2>Detailed game mechanics and calculations</h2>
+      <table>
+        <caption>Ability information table</caption>
+        <thead>
+          <td>Action</td>
+          <td>Energy cost</td>
+          <td>Attack damage</td>
+          <td>Special effects</td>
+        </thead>
+        <tr>
+          <td>Sword</td>
+          <td>10</td>
+          <td>20</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Shield</td>
+          <td>0</td>
+          <td>0</td>
+          <td>Recovers 5 energy and quarters enemy damage.</td>
+        </tr>
+        <tr>
+          <td>Blaster</td>
+          <td>30</td>
+          <td>25</td>
+          <td>Decreases enemy accuracy to 40% and halves enemy damage.</td>
+        </tr>
+        <tr>
+          <td>Heal</td>
+          <td>10</td>
+          <td>0</td>
+          <td>Heals 5 health and blocks enemy attack.</td>
+        </tr>
+      </table>
       <h3>Player health</h3>
       <p>Player health is set at the beginning of the game to "100". It will decrease from enemies' attacks until it reaches zero, which is game over.
         <br>After each defeated foe, you regain 40 health (to a maximum of 100).
@@ -49,13 +75,22 @@
       <p>The foe's level ("lvl.") is determined using a random number generator that creates an integer between 1 and 10.
         <br>Many other calculations rely on this determined number, which changes after each time you defeat the previous enemy.
       </p>
+      <code>var lvl = Math.floor(Math.random() * 10) + 1;</code>
       <h3>Enemy attack damage</h3>
-      <p>The enemy's attack damage is mainly a random integer between 1 and 5, which is then multiplied by the foe's level.
+      <p>The enemy's attack damage is a random integer between 1 and 5, which is then multiplied by the foe's level.
         <br>The other elements that affect this are the blaster and shield which half and quarter this value.
       </p>
+      <code>var player_dmg = (Math.floor(Math.random() * 5) + 1) * lvl;</code>
+      <br>
+      <code>function shield() { ... var player_dmg = Math.floor((((Math.random() * 5) + 1) * lvl) / 4); ... }</code>
+      <br>
+      <code>function blaster() { ... var player_dmg = Math.floor((((Math.random() * 5) + 1) * lvl) / 2); ... }</code>
       <h3>Enemy accuracy</h3>
       <p>The enemy's accuracy is a fixed percentage of 60%. The only exception is with the blaster ability, which decreases it to 40%.
       </p>
+      <code>var ai_attack = Math.random(); if (ai_attack > 0.4) { ... }</code>
+      <br>
+      <code>function blaster() { ... var ai_attack = Math.random(); if (ai_attack > 0.6) { ... } ... }</code>
       <h3>Score</h3>
       <p>Your score is simply the sum of the levels of all the enemies you defeat.
       </p>

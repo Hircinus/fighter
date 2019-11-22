@@ -115,12 +115,13 @@ function heal() {
   energy.innerHTML = energy_pts;
   log.innerHTML += "<li>Player used Heal : gained 5 health ; lost 10 energy ; dealt 0 damage.</li>";
 }
+
 // Checks enemy health and player health and acts accordingly
 function check() {
   if (enemy_health_pts <= 0) {
     score += lvl;
     scoreboard.innerHTML = score;
-    log.innerHTML += "<li>Player defeated lvl. " + lvl + " enemy : score + " + lvl + ".</li>";
+    log.innerHTML += "<li><b>Player defeated lvl. " + lvl + " enemy : score + " + lvl + ".</b></li>";
     lvl = Math.floor(Math.random() * 10) + 1;
     lvl_holder.innerHTML = lvl;
     enemy_health_pts = 10 * lvl;
@@ -146,4 +147,37 @@ function check() {
     location.reload();
   }
   else {}
+}
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '49') {
+        // 1
+        sword();
+        check();
+        return;
+    }
+    else if (e.keyCode == '50') {
+        // 2
+        shield();
+        check();
+        return;
+    }
+    else if (e.keyCode == '51') {
+       // 3
+       blaster();
+       check();
+       return;
+    }
+    else if (e.keyCode == '52') {
+       // 4
+       heal();
+       check();
+       return;
+    }
+
 }

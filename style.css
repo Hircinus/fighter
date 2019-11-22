@@ -2,18 +2,61 @@ body {
   overflow-x: hidden;
   background-color: lightgrey
 }
+
+/*LISTS*/
 ul {
   list-style-type: none
 }
 ul > li {
   margin: 5px
 }
+
+/*OTHER*/
 hr {
   border-radius: 50px;
   background-color: blue;
   border: outset darkblue 2px;
   height: 5px
 }
+code {
+  background-color: rgba(0,0,255,0.2);
+  border: #aaa 2px solid;
+  border-radius: 10px;
+  font-family: monospace;
+  padding: 5px;
+  line-height: 40px
+}
+
+/*TABLE*/
+caption {
+  font-size: 20px;
+  font-weight: bold;
+}
+table {
+  margin: auto
+}
+table, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+td:first-child {
+  font-weight: bold
+}
+td {
+  padding: 5px
+}
+thead > tr {
+  background-color: darkblue!important;
+  color: white;
+}
+tr:hover {
+  background-color: rgba(0,0,255,0.2)
+}
+thead > tr:hover {
+  background-color: darkblue
+}
+
+/*LINKS*/
 a {
   color: blue;
   text-decoration: none
