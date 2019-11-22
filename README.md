@@ -20,6 +20,7 @@ Repo for a [simple text fighter strategy game](https://hircinus.github.io/fighte
  - After defeating each enemy, a new enemy is generated
  - Score display
  - Game over (when player health reaches 0)
+ - Score save after game over
 
 *This is the full list of features. See each individual release for their specific features.*
 
