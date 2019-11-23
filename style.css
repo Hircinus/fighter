@@ -18,10 +18,25 @@ footer {
   text-align: center;
   padding: 5px;
   marging-top: 5px;
-  border-left: 1px solid darkblue;
-  border-right: 1px solid darkblue;
   border-top: 1px solid darkblue;
-  border-radius: 10px 10px 0 0
+}
+
+/* NAVBAR */
+body {
+  margin: 0;
+  padding-top: 25px;
+}
+body > *:not(nav):not(footer) {
+  margin-left: 10px
+}
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+  background-color: lightgrey;
+  border-bottom: darkblue 1px solid
 }
 
 /*OTHER*/
@@ -32,12 +47,9 @@ hr {
   height: 5px
 }
 code {
-  background-color: rgba(0,0,255,0.2);
-  border: #aaa 2px solid;
-  border-radius: 10px;
-  font-family: monospace;
-  padding: 5px;
-  line-height: 40px
+  background-color: #bbb;
+  padding: 2px;
+  border-radius: 5px
 }
 button {
   border-radius: 10px;
@@ -100,6 +112,11 @@ label {
 }
 
 /* GRID */
+canvas {
+  border: darkblue 1px solid;
+  background-color: black;
+  border-radius: 10px
+}
 .item-1 { grid-area: player; }
 .item-2 { grid-area: enemy; }
 .item-3 { grid-area: controller; }
@@ -112,6 +129,7 @@ label {
 .container {
   display: grid;
   grid-gap: 10px;
+  margin: 0 10px 10px 10px;
   grid-template-areas:
     'player enemy controller'
     'console console links';
