@@ -5,32 +5,52 @@
     <link href="style.css" rel="stylesheet" type="text/css">
   </head>
   <body onload="initialize()">
-    <ul>
-      <li><a href="index.html">[<] Back home</a></li>
+    <div class="container">
+      <div class="item-1">
+        <h2 id="name_holder"></h2>
+        <ul>
+          <li>Health: <span id="health"></span></li>
+          <li>Energy: <span id="energy"></span></li>
+          <li>Score: <span id="score"></span></li>
+        </ul>
+      </div>
+      <div class="item-2">
+        <h2>A lvl. <span id="lvl"></span> enemy approaches!</h2>
+        <em>Defeat the enemy by bringing his health to 0.</em>
+        <ul>
+          <li>Health: <span id="enemy_health"></span></li>
+          <li>Attack damage range: <span id="enemy_attack_range"></span></li>
+        </ul>
+      </div>
+      <div class="item-3">
+        <h2>Choose an action:</h2>
+        <form>
+          <button type="button" id="sword_button" onclick="sword(); check();">Sword [1]</button><br>
+          <label for="sword_button">-10 energy ; 20 damage</label><br>
+          <button type="button" id="shield_button" onclick="shield(); check();">Shield [2]</button><br>
+          <label for="shield_button">+5 energy ; 0 damage ; enemy damage / 4</label><br>
+          <button type="button" id="blaster_button" onclick="blaster(); check();">Blaster [3]</button><br>
+          <label for="blaster_button">-30 energy ; 25 damage ; -20% enemy accuracy ; enemy damage / 2</label><br>
+          <button type="button" id="heal_button" onclick="heal(); check();">Heal [4]</button><br>
+          <label for="heal_button">-10 energy ; +5 health</label><br>
+        </form>
+      </div>
+      <div class="item-4">
+        <h2>Battle log</h2>
+        <ol id="log"></ol>
+      </div>
+      <div class="item-5">
+        <ul>
+          <li><a href="index.html">[<] Back home</a></li>
 
-      <li><a href="help.html">[?] Help</a></li>
+          <li><a href="help.html">[?] Help</a></li>
 
-      <li><a href="https://github.com/Hircinus/fighter/issues/new">[!] Report an issue</a></li>
-    </ul>
-    <h1 id="name_holder"></h1>
-    <ul>
-      <li>Health: <span id="health"></span></li>
-      <li>Energy: <span id="energy"></span></li>
-      <li>Score: <span id="score"></span></li>
-    </ul>
-    <hr>
-    <h2>A lvl. <span id="lvl"></span> enemy approaches!</h2>
-    <ul>
-      <li>Health: <span id="enemy_health"></span></li>
-    </ul>
-    <hr>
-    <h2>Choose an action:</h2>
-    <button type="button" id="sword_button" onclick="sword(); check();">Sword [1]</button>
-    <button type="button" id="shield_button" onclick="shield(); check();">Shield [2]</button>
-    <button type="button" id="blaster_button" onclick="blaster(); check();">Blaster [3]</button>
-    <button type="button" id="heal_button" onclick="heal(); check();">Heal [4]</button>
-    <h2>Battle log</h2>
-    <ol id="log"></ol>
+          <li><a href="https://github.com/Hircinus/fighter/issues/new">[!] Report an issue</a></li>
+        </ul>
+        <br>
+        <em>&copy; 2019 Jacob Alfahad</em>
+      </div>
+    </div>
     <script src="combat.js"></script>
   </body>
 </html>

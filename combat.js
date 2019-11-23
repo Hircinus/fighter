@@ -19,6 +19,7 @@ var lvl = Math.floor(Math.random() * 10) + 1;
 var lvl_holder = document.getElementById("lvl");
 var enemy_health_pts = 10 * lvl;
 var enemy_health = document.getElementById("enemy_health");
+var enemy_attack_range = document.getElementById("enemy_attack_range");
 
 // Initializes game with custom username and initial health and energy
 function initialize() {
@@ -49,6 +50,7 @@ function initialize() {
     energy.style.color = "black";
   }
   enemy_health.innerHTML = enemy_health_pts;
+  enemy_attack_range.innerHTML = "[" + lvl + ", " + (lvl + 25) + "]";
   lvl_holder.innerHTML = lvl;
   scoreboard.innerHTML = score;
 }
@@ -204,6 +206,7 @@ function check() {
     lvl_holder.innerHTML = lvl;
     enemy_health_pts = 10 * lvl;
     enemy_health.innerHTML = enemy_health_pts;
+    enemy_attack_range.innerHTML = "[" + lvl + ", " + (lvl + 25) + "]";
     if (health_pts <= 60) {
       health_pts += 40;
     }

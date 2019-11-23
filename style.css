@@ -14,6 +14,15 @@ ol#log {
   border: 2px outset darkblue;
   border-radius: 10px;
 }
+footer {
+  text-align: center;
+  padding: 5px;
+  marging-top: 5px;
+  border-left: 1px solid darkblue;
+  border-right: 1px solid darkblue;
+  border-top: 1px solid darkblue;
+  border-radius: 10px 10px 0 0
+}
 
 /*OTHER*/
 hr {
@@ -84,6 +93,33 @@ tr:hover {
 }
 thead > tr:hover {
   background-color: darkblue
+}
+label {
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* GRID */
+.item-1 { grid-area: player; }
+.item-2 { grid-area: enemy; }
+.item-3 { grid-area: controller; }
+.item-4 {
+  grid-area: console;
+  background-color: #555;
+  color: white
+}
+.item-5 { grid-area: links; }
+.container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    'player enemy controller'
+    'console console links';
+}
+.container > div {
+  border: darkblue 1px solid;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 /*LINKS*/
