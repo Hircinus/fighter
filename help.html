@@ -73,52 +73,52 @@
         <tr>
           <td>1</td>
           <td>10</td>
-          <td>[1, 5]</td>
+          <td>[1, 26]</td>
         </tr>
         <tr>
           <td>2</td>
           <td>20</td>
-          <td>[2, 10]</td>
+          <td>[2, 27]</td>
         </tr>
         <tr>
           <td>3</td>
           <td>30</td>
-          <td>[3, 15]</td>
+          <td>[3, 28]</td>
         </tr>
         <tr>
           <td>4</td>
           <td>40</td>
-          <td>[4, 20]</td>
+          <td>[4, 29]</td>
         </tr>
         <tr>
           <td>5</td>
           <td>50</td>
-          <td>[5, 25]</td>
+          <td>[5, 30]</td>
         </tr>
         <tr>
           <td>6</td>
           <td>60</td>
-          <td>[6, 30]</td>
+          <td>[6, 31]</td>
         </tr>
         <tr>
           <td>7</td>
           <td>70</td>
-          <td>[7, 35]</td>
+          <td>[7, 32]</td>
         </tr>
         <tr>
           <td>8</td>
           <td>80</td>
-          <td>[8, 40]</td>
+          <td>[8, 33]</td>
         </tr>
         <tr>
           <td>9</td>
           <td>90</td>
-          <td>[9, 45]</td>
+          <td>[9, 34]</td>
         </tr>
         <tr>
           <td>10</td>
           <td>100</td>
-          <td>[10, 50]</td>
+          <td>[10, 35]</td>
         </tr>
       </table>
       <h3>Player health</h3>
@@ -136,14 +136,14 @@
       </p>
       <code>var lvl = Math.floor(Math.random() * 10) + 1;</code>
       <h3>Enemy attack damage</h3>
-      <p>The enemy's attack damage is a random integer between 1 and 5, which is then multiplied by the foe's level.
+      <p>The enemy's attack damage is a range that changes based on the level of the enemy.
         <br>The other elements that affect this are the blaster and shield which half and quarter this value.
       </p>
-      <code>var player_dmg = (Math.floor(Math.random() * 5) + 1) * lvl;</code>
+      <code>var player_dmg = Math.floor((Math.random() * 25) + 1 + (lvl - 1));</code>
       <br>
-      <code>function shield() { ... var player_dmg = Math.floor((((Math.random() * 5) + 1) * lvl) / 4); ... }</code>
+      <code>function shield() { ... var player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 4); ... }</code>
       <br>
-      <code>function blaster() { ... var player_dmg = Math.floor((((Math.random() * 5) + 1) * lvl) / 2); ... }</code>
+      <code>function blaster() { ... var player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 2); ... }</code>
       <h3>Enemy accuracy</h3>
       <p>The enemy's accuracy is a fixed percentage of 60%. The only exception is with the blaster ability, which decreases it to 40%.
       </p>
@@ -153,5 +153,10 @@
       <h3>Score</h3>
       <p>Your score is simply the sum of the levels of all the enemies you defeat.
       </p>
+    <h2>Disclaimers and terms</h2>
+    <p>This game is licensed under <a href="license.txt">MIT</a>.
+      <br>In short, you can copy, edit, distribute, etc. the code for this game as you wish, assuming it is under the same license, with proper attribution to Jacob Alfahad and with no liability to Jacob Alfahad for damages or other inconveniences.
+      <br>For commercial purposes, please <a href="mailto:j.alfahad@gmail.com">contact Jacob Alfahad</a>.
+    </p>
   </body>
 </html>

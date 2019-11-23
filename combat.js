@@ -61,7 +61,7 @@ function sword() {
   }
   var ai_attack = Math.random();
   if (ai_attack > 0.4) {
-    var player_dmg = (Math.floor(Math.random() * 5) + 1) * lvl;
+    var player_dmg = Math.floor(Math.random() * 25) + 1 + (lvl - 1);
     health_pts -= player_dmg;
   }
   else {
@@ -98,7 +98,7 @@ function shield() {
   }
   var ai_attack = Math.random();
   if (ai_attack > 0.4) {
-    var player_dmg = Math.floor((((Math.random() * 5) + 1) * lvl) / 4);
+    var player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 4);
     health_pts -= player_dmg;
   }
   else {
@@ -133,7 +133,7 @@ function blaster() {
   }
   var ai_attack = Math.random();
   if (ai_attack > 0.6) {
-    var player_dmg = Math.floor(((Math.random() * 5) + 1) * lvl) / 2;
+    var player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 2);
     health_pts -= player_dmg;
   }
   else {
