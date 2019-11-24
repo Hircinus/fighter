@@ -140,6 +140,19 @@ canvas {
     'player enemy controller'
     'console console links';
 }
+@media only screen and (max-width: 1000px) {
+  .container {
+    display: grid;
+    grid-gap: 10px;
+    margin: 0 10px 10px 10px;
+    grid-template-areas:
+      'player'
+      'enemy'
+      'controller'
+      'console'
+      'links';
+  }
+}
 .container > div {
   border: darkblue 1px solid;
   border-radius: 10px;

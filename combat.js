@@ -8,9 +8,13 @@ var score = 0;
 var scoreboard = document.getElementById("score");
 var player_dmg;
 
+// Counter variables
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+
 // Game log and controller variables
 var log = document.getElementById("log");
-var new_log;
 var sword_button = document.getElementById("sword_button");
 var shield_button = document.getElementById("shield_button");
 var blaster_button = document.getElementById("blaster_button");
@@ -41,9 +45,26 @@ function initialize() {
   energy.style.width = (energy_pts - 5) + "%";
   enemy_health.innerHTML = enemy_health_pts;
   enemy_health.style.width = (enemy_health_pts - 5) + "%";
-  enemy_attack_range.innerHTML = "[" + lvl + ", " + (lvl + 25) + "]";
+  enemy_attack_range.innerHTML = "[" + (lvl * 3) + ", " + ((lvl * 3) + 15) + "]";
   lvl_holder.innerHTML = lvl;
   scoreboard.innerHTML = score;
+}
+
+// Counter
+setInterval(setTime, 1000);
+function setTime() {
+  ++totalSeconds;
+  seconds.innerHTML = pad(totalSeconds % 60);
+  minutes.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
 }
 
 // Executes sword action
@@ -54,7 +75,7 @@ function sword() {
   }
   var ai_attack = Math.random();
   if (ai_attack > 0.4) {
-    player_dmg = Math.floor(Math.random() * 25) + 1 + (lvl - 1);
+    player_dmg = Math.round(Math.random() * 15) + 3 * lvl;
     health_pts -= player_dmg;
   }
   else {
@@ -69,7 +90,6 @@ function sword() {
   energy.style.width = (energy_pts - 5) + "%";
   enemy_health.innerHTML = enemy_health_pts;
   enemy_health.style.width = (enemy_health_pts - 5) + "%";
-  new_log = "Player used Sword : lost " + player_dmg + " health ; lost 10 energy ; dealt 20 damage.";
   log.innerHTML += "<li>Player used Sword : lost " + player_dmg + " health ; lost 10 energy ; dealt 20 damage.</li>";
 }
 
@@ -81,7 +101,7 @@ function shield() {
   }
   var ai_attack = Math.random();
   if (ai_attack > 0.4) {
-    player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 4);
+    player_dmg = Math.round(((Math.random() * 15) + 3 * lvl) / 4);
     health_pts -= player_dmg;
   }
   else {
@@ -93,7 +113,6 @@ function shield() {
   health.style.width = (health_pts - 5) + "%";
   energy.innerHTML = energy_pts;
   energy.style.width = (energy_pts - 5) + "%";
-  new_log = "Player used Shield : lost " + player_dmg + " health ; gained 10 energy ; dealt 0 damage.";
   log.innerHTML += "<li>Player used Shield : lost " + player_dmg + " health ; gained 10 energy ; dealt 0 damage.</li>";
 }
 
@@ -105,7 +124,7 @@ function blaster() {
   }
   var ai_attack = Math.random();
   if (ai_attack > 0.6) {
-    player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 2);
+    player_dmg = Math.round(((Math.random() * 15) + 3 * lvl) / 2);
     health_pts -= player_dmg;
   }
   else {
@@ -120,7 +139,6 @@ function blaster() {
   energy.style.width = (energy_pts - 5) + "%";
   enemy_health.innerHTML = enemy_health_pts;
   enemy_health.style.width = (enemy_health_pts - 5) + "%";
-  new_log = "Player used Blaster : lost " + player_dmg + " health ; lost 30 energy ; dealt 25 damage.";
   log.innerHTML += "<li>Player used Blaster : lost " + player_dmg + " health ; lost 30 energy ; dealt 25 damage.</li>";
 }
 
@@ -142,7 +160,6 @@ function heal() {
   player_dmg = 0;
   energy.innerHTML = energy_pts;
   energy.style.width = (energy_pts - 5) + "%";
-  new_log = "Player used Heal : gained 5 health ; lost 10 energy ; dealt 0 damage.";
   log.innerHTML += "<li>Player used Heal : gained 5 health ; lost 10 energy ; dealt 0 damage.</li>";
 }
 
@@ -157,7 +174,7 @@ function check() {
     enemy_health_pts = 10 * lvl;
     enemy_health.innerHTML = enemy_health_pts;
     enemy_health.style.width = (enemy_health_pts - 5) + "%";
-    enemy_attack_range.innerHTML = "[" + lvl + ", " + (lvl + 25) + "]";
+    enemy_attack_range.innerHTML = "[" + (lvl * 3) + ", " + ((lvl * 3) + 15) + "]";
     if (health_pts <= 60) {
       health_pts += 40;
     }
@@ -177,10 +194,9 @@ function check() {
   }
   if (health_pts <= 0) {
     var confirm_download = confirm("Would you like to download your results?");
-    new_log = "Player killed by lvl. " + lvl + " enemy (score: " + score + ").";
-    log.innerHTML += "<li><b>Player killed by lvl. " + lvl + " enemy (score: " + score + ").</b></li>";
-    alert("You died from a lvl. " + lvl + " enemy.\nYour score was " + score + ". Good luck next time!");
-
+    log.innerHTML += "<li><b>Player killed by lvl. " + lvl + " enemy.<br>Score: " + score + "<br>Time: " + minutes.innerHTML + ":" + seconds.innerHTML + "</b></li>";
+    alert("You died from a lvl. " + lvl + " enemy.\nYour score was " + score + ".\nYour time was " + minutes.innerHTML + ":" + seconds.innerHTML + "\nGood luck next time!");
+    // If they wanna download
     if (confirm_download == true) {
       var hiddenElement = document.createElement('a');
       var date = new Date();
@@ -190,74 +206,10 @@ function check() {
       hiddenElement.click();
     }
 
-    location.reload();
+    location.reload(); // reload page
   }
   else {}
 }
-
-/*
-// Drawing variables
-var canvas = document.getElementById("myCanvas");
-canvas.width = 400;
-canvas.height = 300;
-var ctx = canvas.getContext("2d");
-var x = canvas.width - 40;
-var y = canvas.height/2;
-
-drawEnemy();
-drawEnemyText();
-drawPlayer();
-drawLine();
-drawPHP();
-drawEHP();
-
-function clearCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawEnemy();
-  drawEnemyText();
-  drawPlayer();
-  drawLine();
-  drawPHP();
-  drawEHP();
-}
-
-function drawPHP() {
-  ctx.font = "12px Arial";
-  ctx.fillStyle = 'red';
-  ctx.fillText(-player_dmg, 10, y);
-}
-function drawEHP() {
-  ctx.font = "12px Arial";
-  ctx.fillStyle = 'red';
-  ctx.fillText(-((10 * lvl) - enemy_health_pts), 30, y);
-}
-function drawLine() {
-  ctx.beginPath();
-  ctx.moveTo(0, (y + 30));
-  ctx.strokeStyle = "white";
-  ctx.lineTo(400, (y + 30));
-  ctx.stroke();
-}
-function drawEnemy() {
-  ctx.beginPath();
-  ctx.rect(x, y, 30, 30);
-  ctx.fillStyle = "red";
-  ctx.fill();
-  ctx.closePath();
-}
-function drawPlayer() {
-  ctx.beginPath();
-  ctx.rect(10, y, 30, 30);
-  ctx.fillStyle = "blue";
-  ctx.fill();
-  ctx.closePath();
-}
-function drawEnemyText() {
-  ctx.font = "15px Arial";
-  ctx.fillStyle = 'white';
-  ctx.fillText(lvl, (x + 12), (y + 20));
-}
-*/
 
 // Checks if keys [1,2,3,4] are pressed
 document.onkeydown = checkKey;
