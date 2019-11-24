@@ -6,6 +6,7 @@ var health = document.getElementById("health");
 var energy = document.getElementById("energy");
 var score = 0;
 var scoreboard = document.getElementById("score");
+var player_dmg;
 
 // Game log and controller variables
 var log = document.getElementById("log");
@@ -35,22 +36,11 @@ function initialize() {
     name_holder.innerHTML = "Fighter";
   }
   health.innerHTML = health_pts;
-  health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
-  if (health_pts >= 60) {
-    health.style.color = "white";
-  }
-  else {
-    health.style.color = "black";
-  }
+  health.style.width = (health_pts - 5) + "%";
   energy.innerHTML = energy_pts;
-  energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
-  if (energy_pts >= 60) {
-    energy.style.color = "white";
-  }
-  else {
-    energy.style.color = "black";
-  }
+  energy.style.width = (energy_pts - 5) + "%";
   enemy_health.innerHTML = enemy_health_pts;
+  enemy_health.style.width = (enemy_health_pts - 5) + "%";
   enemy_attack_range.innerHTML = "[" + lvl + ", " + (lvl + 25) + "]";
   lvl_holder.innerHTML = lvl;
   scoreboard.innerHTML = score;
@@ -64,34 +54,22 @@ function sword() {
   }
   var ai_attack = Math.random();
   if (ai_attack > 0.4) {
-    var player_dmg = Math.floor(Math.random() * 25) + 1 + (lvl - 1);
+    player_dmg = Math.floor(Math.random() * 25) + 1 + (lvl - 1);
     health_pts -= player_dmg;
   }
   else {
-    var player_dmg = 0;
+    player_dmg = 0;
   }
   enemy_health_pts -= 20;
   energy_pts -= 10;
   // CLEAR
   health.innerHTML = health_pts;
-  health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
-  if (health_pts >= 60) {
-    health.style.color = "white";
-  }
-  else {
-    health.style.color = "black";
-  }
+  health.style.width = (health_pts - 5) + "%";
   energy.innerHTML = energy_pts;
-  energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
-  if (energy_pts >= 60) {
-    energy.style.color = "white";
-  }
-  else {
-    energy.style.color = "black";
-  }
+  energy.style.width = (energy_pts - 5) + "%";
   enemy_health.innerHTML = enemy_health_pts;
+  enemy_health.style.width = (enemy_health_pts - 5) + "%";
   new_log = "Player used Sword : lost " + player_dmg + " health ; lost 10 energy ; dealt 20 damage.";
-  clearCanvas();
   log.innerHTML += "<li>Player used Sword : lost " + player_dmg + " health ; lost 10 energy ; dealt 20 damage.</li>";
 }
 
@@ -103,32 +81,19 @@ function shield() {
   }
   var ai_attack = Math.random();
   if (ai_attack > 0.4) {
-    var player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 4);
+    player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 4);
     health_pts -= player_dmg;
   }
   else {
-    var player_dmg = 0;
+    player_dmg = 0;
   }
   energy_pts += 5;
   // CLEAR
   health.innerHTML = health_pts;
-  health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
-  if (health_pts >= 60) {
-    health.style.color = "white";
-  }
-  else {
-    health.style.color = "black";
-  }
+  health.style.width = (health_pts - 5) + "%";
   energy.innerHTML = energy_pts;
-  energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
-  if (energy_pts >= 60) {
-    energy.style.color = "white";
-  }
-  else {
-    energy.style.color = "black";
-  }
+  energy.style.width = (energy_pts - 5) + "%";
   new_log = "Player used Shield : lost " + player_dmg + " health ; gained 10 energy ; dealt 0 damage.";
-  clearCanvas();
   log.innerHTML += "<li>Player used Shield : lost " + player_dmg + " health ; gained 10 energy ; dealt 0 damage.</li>";
 }
 
@@ -140,34 +105,22 @@ function blaster() {
   }
   var ai_attack = Math.random();
   if (ai_attack > 0.6) {
-    var player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 2);
+    player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 2);
     health_pts -= player_dmg;
   }
   else {
-    var player_dmg = 0;
+    player_dmg = 0;
   }
   enemy_health_pts -= 25;
   energy_pts -= 30;
   // CLEAR
   health.innerHTML = health_pts;
-  health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
-  if (health_pts >= 60) {
-    health.style.color = "white";
-  }
-  else {
-    health.style.color = "black";
-  }
+  health.style.width = (health_pts - 5) + "%";
   energy.innerHTML = energy_pts;
-  energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
-  if (energy_pts >= 60) {
-    energy.style.color = "white";
-  }
-  else {
-    energy.style.color = "black";
-  }
+  energy.style.width = (energy_pts - 5) + "%";
   enemy_health.innerHTML = enemy_health_pts;
+  enemy_health.style.width = (enemy_health_pts - 5) + "%";
   new_log = "Player used Blaster : lost " + player_dmg + " health ; lost 30 energy ; dealt 25 damage.";
-  clearCanvas();
   log.innerHTML += "<li>Player used Blaster : lost " + player_dmg + " health ; lost 30 energy ; dealt 25 damage.</li>";
 }
 
@@ -185,23 +138,11 @@ function heal() {
   energy_pts -= 10;
   // CLEAR
   health.innerHTML = health_pts;
-  health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
-  if (health_pts >= 60) {
-    health.style.color = "white";
-  }
-  else {
-    health.style.color = "black";
-  }
+  health.style.width = (health_pts - 5) + "%";
+  player_dmg = 0;
   energy.innerHTML = energy_pts;
-  energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
-  if (energy_pts >= 60) {
-    energy.style.color = "white";
-  }
-  else {
-    energy.style.color = "black";
-  }
+  energy.style.width = (energy_pts - 5) + "%";
   new_log = "Player used Heal : gained 5 health ; lost 10 energy ; dealt 0 damage.";
-  clearCanvas();
   log.innerHTML += "<li>Player used Heal : gained 5 health ; lost 10 energy ; dealt 0 damage.</li>";
 }
 
@@ -215,6 +156,7 @@ function check() {
     lvl_holder.innerHTML = lvl;
     enemy_health_pts = 10 * lvl;
     enemy_health.innerHTML = enemy_health_pts;
+    enemy_health.style.width = (enemy_health_pts - 5) + "%";
     enemy_attack_range.innerHTML = "[" + lvl + ", " + (lvl + 25) + "]";
     if (health_pts <= 60) {
       health_pts += 40;
@@ -229,26 +171,13 @@ function check() {
       energy_pts = 100;
     }
     health.innerHTML = health_pts;
-    health.style.background = "rgb(255,0,0," + health_pts/100 + ")";
-    if (health_pts >= 60) {
-      health.style.color = "white";
-    }
-    else {
-      health.style.color = "black";
-    }
+    health.style.width = (health_pts - 5) + "%";
     energy.innerHTML = energy_pts;
-    energy.style.background = "rgb(0,0,255," + energy_pts/100 + ")";
-    if (energy_pts >= 60) {
-      energy.style.color = "white";
-    }
-    else {
-      energy.style.color = "black";
-    }
+    energy.style.width = (energy_pts - 5) + "%";
   }
   if (health_pts <= 0) {
     var confirm_download = confirm("Would you like to download your results?");
     new_log = "Player killed by lvl. " + lvl + " enemy (score: " + score + ").";
-    clearCanvas();
     log.innerHTML += "<li><b>Player killed by lvl. " + lvl + " enemy (score: " + score + ").</b></li>";
     alert("You died from a lvl. " + lvl + " enemy.\nYour score was " + score + ". Good luck next time!");
 
@@ -266,6 +195,7 @@ function check() {
   else {}
 }
 
+/*
 // Drawing variables
 var canvas = document.getElementById("myCanvas");
 canvas.width = 400;
@@ -278,7 +208,8 @@ drawEnemy();
 drawEnemyText();
 drawPlayer();
 drawLine();
-drawInfo();
+drawPHP();
+drawEHP();
 
 function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -286,13 +217,19 @@ function clearCanvas() {
   drawEnemyText();
   drawPlayer();
   drawLine();
-  drawInfo();
+  drawPHP();
+  drawEHP();
 }
 
-function drawInfo() {
+function drawPHP() {
   ctx.font = "12px Arial";
-  ctx.fillStyle = 'white';
-  ctx.fillText(new_log, 10, 20);
+  ctx.fillStyle = 'red';
+  ctx.fillText(-player_dmg, 10, y);
+}
+function drawEHP() {
+  ctx.font = "12px Arial";
+  ctx.fillStyle = 'red';
+  ctx.fillText(-((10 * lvl) - enemy_health_pts), 30, y);
 }
 function drawLine() {
   ctx.beginPath();
@@ -320,6 +257,7 @@ function drawEnemyText() {
   ctx.fillStyle = 'white';
   ctx.fillText(lvl, (x + 12), (y + 20));
 }
+*/
 
 // Checks if keys [1,2,3,4] are pressed
 document.onkeydown = checkKey;

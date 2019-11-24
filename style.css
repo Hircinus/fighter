@@ -69,13 +69,19 @@ button:active {
   background-color: rgba(0,0,255,0.3)
 }
 
-#health {
-  padding: 5px;
+#health, #enemy_health {
+  padding-left: 5px;
+  padding-right: 5px;
   font-weight: bold;
+  background-color: red;
+  color: white
 }
 #energy {
-  padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
   font-weight: bold;
+  background-color: blue;
+  color: white
 }
 
 /*TABLE*/
