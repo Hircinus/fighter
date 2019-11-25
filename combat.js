@@ -39,12 +39,7 @@ function initialize() {
   else {
     name_holder.innerHTML = "Fighter";
   }
-  health.innerHTML = health_pts;
-  health.style.width = (health_pts - 5) + "%";
-  energy.innerHTML = energy_pts;
-  energy.style.width = (energy_pts - 5) + "%";
-  enemy_health.innerHTML = enemy_health_pts;
-  enemy_health.style.width = (enemy_health_pts - 5) + "%";
+  clear();
   enemy_attack_range.innerHTML = "[" + (lvl * 3) + ", " + ((lvl * 3) + 15) + "]";
   lvl_holder.innerHTML = lvl;
   scoreboard.innerHTML = score;
@@ -162,8 +157,6 @@ function check() {
     lvl = Math.floor(Math.random() * 10) + 1;
     lvl_holder.innerHTML = lvl;
     enemy_health_pts = 10 * lvl;
-    enemy_health.innerHTML = enemy_health_pts;
-    enemy_health.style.width = (enemy_health_pts - 5) + "%";
     enemy_attack_range.innerHTML = "[" + (lvl * 3) + ", " + ((lvl * 3) + 15) + "]";
     if (health_pts <= 60) {
       health_pts += 40;
@@ -177,10 +170,7 @@ function check() {
     else {
       energy_pts = 100;
     }
-    health.innerHTML = health_pts;
-    health.style.width = (health_pts - 5) + "%";
-    energy.innerHTML = energy_pts;
-    energy.style.width = (energy_pts - 5) + "%";
+    clear();
   }
   if (health_pts <= 0) {
     var confirm_download = confirm("Would you like to download your results?");
@@ -204,9 +194,7 @@ function check() {
 // Checks if keys [1,2,3,4] are pressed
 document.onkeydown = checkKey;
 function checkKey(e) {
-
     e = e || window.event;
-
     if (e.keyCode == '49') {
         // 1
         sword();
@@ -235,5 +223,4 @@ function checkKey(e) {
        check();
        return;
     }
-
 }
