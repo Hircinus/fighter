@@ -1,9 +1,17 @@
+/* GENERAL */
 body {
   overflow-x: hidden;
   background-color: lightgrey
 }
+body {
+  margin: 0;
+  padding-top: 25px;
+}
+body > *:not(nav):not(footer) {
+  margin-left: 10px
+}
 
-/*LISTS*/
+/* LISTS */
 ul {
   list-style-type: none
 }
@@ -11,9 +19,11 @@ ul > li {
   margin: 5px
 }
 ol#log {
-  border: 2px outset darkblue;
-  border-radius: 10px;
+  line-height: 150%
 }
+
+/* FOOTER */
+
 footer {
   text-align: center;
   padding: 5px;
@@ -22,13 +32,7 @@ footer {
 }
 
 /* NAVBAR */
-body {
-  margin: 0;
-  padding-top: 25px;
-}
-body > *:not(nav):not(footer) {
-  margin-left: 10px
-}
+
 nav {
   position: fixed;
   top: 0;
@@ -40,6 +44,14 @@ nav {
 }
 
 /*OTHER*/
+a {
+  color: blue;
+  text-decoration: none
+}
+a:hover {
+  color: darkblue;
+  text-decoration: none
+}
 hr {
   border-radius: 50px;
   background-color: blue;
@@ -51,6 +63,9 @@ code {
   padding: 2px;
   border-radius: 5px
 }
+
+/* BUTTONS */
+
 button {
   border-radius: 10px;
   border: 3px darkblue outset;
@@ -69,22 +84,24 @@ button:active {
   background-color: rgba(0,0,255,0.3)
 }
 
+/* List items holding player attributes */
+
 #health, #enemy_health {
   padding-left: 5px;
-  padding-right: 5px;
+  padding-right: 10px;
   font-weight: bold;
   background-color: red;
   color: white
 }
 #energy {
   padding-left: 5px;
-  padding-right: 5px;
+  padding-right: 10px;
   font-weight: bold;
   background-color: blue;
   color: white
 }
 
-/*TABLE*/
+/* TABLE */
 caption {
   font-size: 20px;
   font-weight: bold;
@@ -118,11 +135,7 @@ label {
 }
 
 /* GRID */
-canvas {
-  border: darkblue 1px solid;
-  background-color: black;
-  border-radius: 10px
-}
+
 .item-1 { grid-area: player; }
 .item-2 { grid-area: enemy; }
 .item-3 { grid-area: controller; }
@@ -157,14 +170,4 @@ canvas {
   border: darkblue 1px solid;
   border-radius: 10px;
   padding: 10px;
-}
-
-/*LINKS*/
-a {
-  color: blue;
-  text-decoration: none
-}
-a:hover {
-  color: darkblue;
-  text-decoration: none
 }

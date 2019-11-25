@@ -140,11 +140,11 @@
       <p>The enemy's attack damage is a range that changes based on the level of the enemy.
         <br>The other elements that affect this are the blaster and shield which half and quarter this value.
       </p>
-      <code>var player_dmg = Math.floor((Math.random() * 25) + 1 + (lvl - 1));</code>
+      <code>player_dmg = Math.round(Math.random() * 15) + 3 * lvl;</code>
       <br>
-      <code>function blaster() { ... var player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 2); ... }</code>
+      <code>function shield() { ... player_dmg = Math.round(((Math.random() * 15) + 3 * lvl) / 4); ... }</code>
       <br>
-      <code>function shield() { ... var player_dmg = Math.floor(((Math.random() * 25) + 1 + (lvl - 1)) / 4); ... }</code>
+      <code>function blaster() { ... player_dmg = Math.round(((Math.random() * 15) + 3 * lvl) / 2); ... }</code>
       <h3>Enemy accuracy</h3>
       <p>The enemy's accuracy is a fixed percentage of 60%. The only exception is with the blaster ability, which decreases it to 40%.
       </p>
@@ -152,7 +152,7 @@
       <br>
       <code>function blaster() { ... var ai_attack = Math.random(); if (ai_attack > 0.6) { ... } ... }</code>
       <h3>Score</h3>
-      <p>Your score is simply the sum of the levels of all the enemies you defeat.
+      <p>Your score is the sum of the levels of all the enemies you defeat.
       </p>
     <h2>Disclaimers and terms</h2>
     <p>This game is licensed under <a href="license.txt">MIT</a>.

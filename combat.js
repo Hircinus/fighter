@@ -83,13 +83,7 @@ function sword() {
   }
   enemy_health_pts -= 20;
   energy_pts -= 10;
-  // CLEAR
-  health.innerHTML = health_pts;
-  health.style.width = (health_pts - 5) + "%";
-  energy.innerHTML = energy_pts;
-  energy.style.width = (energy_pts - 5) + "%";
-  enemy_health.innerHTML = enemy_health_pts;
-  enemy_health.style.width = (enemy_health_pts - 5) + "%";
+  clear();
   log.innerHTML += "<li>Player used Sword : lost " + player_dmg + " health ; lost 10 energy ; dealt 20 damage.</li>";
 }
 
@@ -108,11 +102,7 @@ function shield() {
     player_dmg = 0;
   }
   energy_pts += 5;
-  // CLEAR
-  health.innerHTML = health_pts;
-  health.style.width = (health_pts - 5) + "%";
-  energy.innerHTML = energy_pts;
-  energy.style.width = (energy_pts - 5) + "%";
+  clear();
   log.innerHTML += "<li>Player used Shield : lost " + player_dmg + " health ; gained 10 energy ; dealt 0 damage.</li>";
 }
 
@@ -132,13 +122,7 @@ function blaster() {
   }
   enemy_health_pts -= 25;
   energy_pts -= 30;
-  // CLEAR
-  health.innerHTML = health_pts;
-  health.style.width = (health_pts - 5) + "%";
-  energy.innerHTML = energy_pts;
-  energy.style.width = (energy_pts - 5) + "%";
-  enemy_health.innerHTML = enemy_health_pts;
-  enemy_health.style.width = (enemy_health_pts - 5) + "%";
+  clear();
   log.innerHTML += "<li>Player used Blaster : lost " + player_dmg + " health ; lost 30 energy ; dealt 25 damage.</li>";
 }
 
@@ -154,13 +138,19 @@ function heal() {
   }
   health_pts += 5;
   energy_pts -= 10;
-  // CLEAR
+  player_dmg = 0;
+  clear();
+  log.innerHTML += "<li>Player used Heal : gained 5 health ; lost 10 energy ; dealt 0 damage.</li>";
+}
+
+// Clears variables after calculations
+function clear() {
   health.innerHTML = health_pts;
   health.style.width = (health_pts - 5) + "%";
-  player_dmg = 0;
   energy.innerHTML = energy_pts;
   energy.style.width = (energy_pts - 5) + "%";
-  log.innerHTML += "<li>Player used Heal : gained 5 health ; lost 10 energy ; dealt 0 damage.</li>";
+  enemy_health.innerHTML = enemy_health_pts;
+  enemy_health.style.width = (enemy_health_pts - 5) + "%";
 }
 
 // Checks enemy health and player health and acts accordingly
