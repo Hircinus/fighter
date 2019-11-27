@@ -29,15 +29,15 @@ var enemy_attack_range = document.getElementById("enemy_attack_range");
 
 // Initializes game with custom username and initial health and energy
 function initialize() {
-  var user = prompt("What's your name?", "Fighter");
+  var user = prompt("What's your name?", "Joseph Joestar");
   while (user.length >= 25) {
-    user = prompt("What's your name?\nPlease use less than 25 characters.", "Person");
+    user = prompt("What's your name?\nPlease use less than 25 characters.", "Joseph Joestar");
   }
   if (user != null || user != "") {
     name_holder.innerHTML = user;
   }
   else {
-    name_holder.innerHTML = "Fighter";
+    name_holder.innerHTML = "Joseph Joestar";
   }
   clear();
   enemy_attack_range.innerHTML = "[" + (lvl * 3) + ", " + ((lvl * 3) + 15) + "]";
