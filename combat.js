@@ -128,14 +128,17 @@ function heal() {
     return;
   }
   if (health_pts > 95) {
-    alert("You cannot heal any more.");
-    return;
+    var health_added = 100 - health_pts;
+    health_pts = 100;
   }
-  health_pts += 5;
+  else {
+    var health_added = 5;
+    health_pts += 5;
+  }
   energy_pts -= 10;
   player_dmg = 0;
   clear();
-  log.innerHTML += "<li>Player used Heal : gained 5 health ; lost 10 energy ; dealt 0 damage.</li>";
+  log.innerHTML += "<li>Player used Heal : gained " + health_added + " health ; lost 10 energy ; dealt 0 damage.</li>";
 }
 
 // Clears variables after calculations
@@ -164,8 +167,8 @@ function check() {
     else {
       health_pts = 100;
     }
-    if (energy_pts <= 80) {
-      energy_pts += 20;
+    if (energy_pts <= 60) {
+      energy_pts += 40;
     }
     else {
       energy_pts = 100;
