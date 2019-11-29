@@ -7,6 +7,7 @@ var energy = document.getElementById("energy");
 var score = 0;
 var scoreboard = document.getElementById("score");
 var player_dmg;
+var user;
 
 // Counter variables
 var minutesLabel = document.getElementById("minutes");
@@ -176,7 +177,8 @@ function check() {
     clear();
   }
   if (health_pts <= 0) {
-    var confirm_download = confirm("Would you like to download your results?");
+    var confirm_download = confirm("Would you like to download and share your results?");
+    document.cookie = "score=" + score + "; expires=Thu, 18 Dec 2021 12:00:00 UTC";
     log.innerHTML += "<li><b>Player killed by lvl. " + lvl + " enemy.<br>Score: " + score + "<br>Time: " + minutes.innerHTML + ":" + seconds.innerHTML + "</b></li>";
     alert("You died from a lvl. " + lvl + " enemy.\nYour score was " + score + ".\nYour time was " + minutes.innerHTML + ":" + seconds.innerHTML + "\nGood luck next time!");
     // If they wanna download
@@ -189,7 +191,7 @@ function check() {
       hiddenElement.click();
     }
 
-    location.reload(); // reload page
+    location.replace("https://hircinus.github.io/fighter/save_score.php"); // Send to save page (PHP)
   }
   else {}
 }
