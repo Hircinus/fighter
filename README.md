@@ -36,3 +36,5 @@ Repo for a [simple text fighter strategy game](http://hircinus.000webhostapp.com
 The game is written purely in vanilla JS.
 
 Webpages use HTML and CSS (obviously).
+
+Storing score after game over uses PHP and cookies.
