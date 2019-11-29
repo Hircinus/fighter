@@ -30,12 +30,12 @@ var enemy_attack_range = document.getElementById("enemy_attack_range");
 
 // Initializes game with custom username and initial health and energy
 function initialize() {
-  var user = prompt("What's your name?", "Joseph Joestar");
-  while (user.length >= 25) {
-    user = prompt("What's your name?\nPlease use less than 25 characters.", "Joseph Joestar");
+  window.user = prompt("What's your name?", "Joseph Joestar");
+  while (window.user.length >= 25) {
+    window.user = prompt("What's your name?\nPlease use less than 25 characters.", "Joseph Joestar");
   }
-  if (user != null || user != "") {
-    name_holder.innerHTML = user;
+  if (window.user != null || user != "") {
+    name_holder.innerHTML = window.user;
   }
   else {
     name_holder.innerHTML = "Joseph Joestar";
@@ -178,20 +178,22 @@ function check() {
   }
   if (health_pts <= 0) {
     var confirm_download = confirm("Would you like to download and share your results?");
-    document.cookie = "score=" + score + "; expires=Thu, 18 Dec 2021 12:00:00 UTC";
     log.innerHTML += "<li><b>Player killed by lvl. " + lvl + " enemy.<br>Score: " + score + "<br>Time: " + minutes.innerHTML + ":" + seconds.innerHTML + "</b></li>";
     alert("You died from a lvl. " + lvl + " enemy.\nYour score was " + score + ".\nYour time was " + minutes.innerHTML + ":" + seconds.innerHTML + "\nGood luck next time!");
     // If they wanna download
     if (confirm_download == true) {
+      document.cookie = "score=" + score + "; expires=Thu, 18 Dec 2021 12:00:00 UTC";
+      document.cookie = "user=" + user + "; expires=Thu, 18 Dec 2021 12:00:00 UTC";
+      document.cookie = "time=" + new Date() + "; expires=Thu, 18 Dec 2021 12:00:00 UTC";
       var hiddenElement = document.createElement('a');
       var date = new Date();
       hiddenElement.href = 'data:attachment/text,' + encodeURI("<!DOCTYPE html><html><head><title>Score for " + date + "</title></head><body><h1>Score for " + date + "</h1><ol>" + log.innerHTML + "</ol><br><em><a href='https://hircinus.github.io/fighter/'>Simple fighting game</a> by Jacob Alfahad, 2019</em></body></html>");
       hiddenElement.target = '_blank';
       hiddenElement.download = 'score-' + date + '.html';
       hiddenElement.click();
+      location.replace("http://localhost:8888/fighter/save_score.php"); // Send to save page (PHP)
     }
-
-    location.replace("https://hircinus.github.io/fighter/save_score.php"); // Send to save page (PHP)
+    else { location.reload(); }
   }
   else {}
 }
