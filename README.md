@@ -1,9 +1,11 @@
 # Fighter
-Repo for a [simple text fighter strategy game](https://hircinus.github.io/fighter/), developed by Jacob Alfahad (2019).
+Repo for a [simple text fighter strategy game](http://hircinus.000webhostapp.com/), developed by Jacob Alfahad (2019).
 
-[Game explanation.](https://hircinus.github.io/fighter/help.html)
+[Game explanation.](http://hircinus.000webhostapp.com/help.html)
 
-[About the game.](https://hircinus.github.io/fighter/about.html)
+[About the game.](http://hircinus.000webhostapp.com/about.html)
+
+[See documented scores for the game.](http://hircinus.000webhostapp.com/highscores.php)
 
 ## Features
 
