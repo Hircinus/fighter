@@ -6,5 +6,5 @@ $current = file_get_contents($file);
 $current .= "<li><b>" . $_COOKIE["user"] . " : " . $_COOKIE["score"] . "</b> @ " . $_COOKIE["time"] . "</li>\n";
 // Write the contents back to the file
 file_put_contents($file, $current);
-header('Location: http://localhost:8888/fighter/highscores.php');
+header('Location: http://hircinus.000webhostapp.com/highscores.php');
 ?>

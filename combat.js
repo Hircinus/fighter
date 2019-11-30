@@ -191,7 +191,7 @@ function check() {
       hiddenElement.target = '_blank';
       hiddenElement.download = 'score-' + date + '.html';
       hiddenElement.click();
-      location.replace("http://localhost:8888/fighter/save_score.php"); // Send to save page (PHP)
+      location.replace("http://hircinus.000webhostapp.com/save_score.php"); // Send to save page (PHP)
     }
     else { location.reload(); }
   }

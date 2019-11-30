@@ -12,8 +12,17 @@
     <ol>
       <?php echo file_get_contents("highscores.html") ?>
     </ol>
+    <script>
+    var scores = [];
+    var score = getCookie("score");
+    scores.push(score);
+    console.log(scores);
+    </script>
     <hr>
     <a href="index.html">Back home</a>
-    <footer><em>&copy; 2019 Jacob Alfahad</em></footer>
+    <footer>
+      <em>&copy; 2019 Jacob Alfahad</em><br>
+      <p><b>Please note:</b> Your scores are saved on this page if you select to save and share your score. After approximately 100 entries, the oldest 25 will be removed from the page (to allow space for other entries).</p>
+    </footer>
   </body>
 </html>
