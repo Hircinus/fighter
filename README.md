@@ -1,11 +1,9 @@
 # Fighter
-Repo for a [simple text fighter strategy game](http://hircinus.000webhostapp.com/), developed by Jacob Alfahad (2019).
+Repo for a [simple text fighter strategy game](https://hircinus.github.io/fighter/), developed by Jacob Alfahad (2019).
 
-[Game explanation.](http://hircinus.000webhostapp.com/help.html)
+[Game explanation.](https://hircinus.github.io/fighter/help.html)
 
-[About the game.](http://hircinus.000webhostapp.com/about.html)
-
-[See documented scores for the game.](http://hircinus.000webhostapp.com/highscores.php)
+[About the game.](https://hircinus.github.io/fighter/about.html)
 
 ## Features
 
@@ -25,9 +23,7 @@ Repo for a [simple text fighter strategy game](http://hircinus.000webhostapp.com
  - Battle log (displays attack damage, health loss, energy loss and if enemy defeated);
  - After defeating each enemy, a new enemy is generated;
  - Score display;
- - Game over (when player health reaches 0);
- - Score save after game over;
- - Score saves globally after game over.
+ - Game over (when player health reaches 0).
 
 *This is the full list of features. See each individual release for their specific features added.*
 
@@ -36,5 +32,3 @@ Repo for a [simple text fighter strategy game](http://hircinus.000webhostapp.com
 The game is written purely in vanilla JS.
 
 Webpages use HTML and CSS (obviously).
-
-Storing score after game over uses PHP and cookies.
