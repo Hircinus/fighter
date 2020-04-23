@@ -31,15 +31,10 @@ var enemy_attack_range = document.getElementById("enemy_attack_range");
 // Initializes game with custom username and initial health and energy
 function initialize() {
   window.user = prompt("What's your name?", "Joseph Joestar");
-  while (window.user.length >= 25) {
-    window.user = prompt("What's your name?\nPlease use less than 25 characters.", "Joseph Joestar");
+  while(window.user.length >= 25 || window.user === null || window.user === "") {
+    window.user = prompt("What's your name?", "Joseph Joestar");
   }
-  if (window.user != null || user != "") {
-    name_holder.innerHTML = window.user;
-  }
-  else {
-    name_holder.innerHTML = "Joseph Joestar";
-  }
+  name_holder.innerText = window.user;
   clear();
   enemy_attack_range.innerHTML = "[" + (lvl * 3) + ", " + ((lvl * 3) + 15) + "]";
   lvl_holder.innerHTML = lvl;
@@ -191,7 +186,6 @@ function check() {
       hiddenElement.target = '_blank';
       hiddenElement.download = 'score-' + date + '.html';
       hiddenElement.click();
-      location.replace("http://hircinus.000webhostapp.com/save_score.php"); // Send to save page (PHP)
     }
     else { location.reload(); }
   }

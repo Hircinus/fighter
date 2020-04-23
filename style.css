@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding-top: 25px;
 }
-body > *:not(nav):not(footer) {
+body > *:not(nav):not(footer):not(hr) {
   margin-left: 10px
 }
 
@@ -82,6 +82,12 @@ button:focus {
 button:active {
   border: inset 3px darkblue;
   background-color: rgba(0,0,255,0.3)
+}
+input {
+  border-radius: 10px;
+  border: 3px darkblue outset;
+  padding: 5px;
+  font-size: 14px
 }
 
 /* List items holding player attributes */
