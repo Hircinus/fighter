@@ -54,7 +54,7 @@
           <td>Blaster</td>
           <td>30</td>
           <td>25</td>
-          <td>Decreases enemy accuracy to 40% and halves enemy damage.</td>
+          <td>Decreases enemy accuracy and halves enemy damage.</td>
         </tr>
         <tr>
           <td>Heal</td>
@@ -70,56 +70,67 @@
           <td>Enemy level</td>
           <td>Enemy health</td>
           <td>Enemy attack damage</td>
+          <td>Enemy accuracy (rounded)</td>
         </thead>
         <tr>
           <td>1</td>
           <td>10</td>
           <td>[3, 18]</td>
+          <td>91.67%</td>
         </tr>
         <tr>
           <td>2</td>
           <td>20</td>
           <td>[6, 21]</td>
+          <td>83.33%</td>
         </tr>
         <tr>
           <td>3</td>
           <td>30</td>
           <td>[9, 24]</td>
+          <td>75.00%</td>
         </tr>
         <tr>
           <td>4</td>
           <td>40</td>
           <td>[12, 27]</td>
+          <td>66.67%</td>
         </tr>
         <tr>
           <td>5</td>
           <td>50</td>
           <td>[15, 30]</td>
+          <td>58.33%</td>
         </tr>
         <tr>
           <td>6</td>
           <td>60</td>
           <td>[18, 33]</td>
+          <td>50.00%</td>
         </tr>
         <tr>
           <td>7</td>
           <td>70</td>
           <td>[21, 36]</td>
+          <td>41.67%</td>
         </tr>
         <tr>
           <td>8</td>
           <td>80</td>
           <td>[24, 39]</td>
+          <td>33.33%</td>
         </tr>
         <tr>
           <td>9</td>
           <td>90</td>
           <td>[27, 42]</td>
+          <td>25.00%</td>
         </tr>
         <tr>
           <td>10</td>
           <td>100</td>
           <td>[30, 45]</td>
+          <td>16.67%</td>
         </tr>
       </table>
       <h3>Player health</h3>
@@ -129,28 +140,22 @@
       <h3>Player energy</h3>
       <p>Player energy, like health, is set to "100" at the beginning. It decreases with every ability the player uses (except shield, which recovers energy).
         <br>Without energy, the player cannot do any action except shield.
-        <br>After each defeated foe, you regain 40 energy (to a maximum of 100).
+        <br>After each defeated foe, you regain 60 energy (to a maximum of 100).
       </p>
       <h3>Enemy level</h3>
       <p>The foe's level ("lvl.") is determined using a random number generator that creates an integer between 1 and 10.
         <br>Many other calculations rely on this determined number, which changes after each time you defeat the previous enemy.
       </p>
-      <code>var lvl = Math.floor(Math.random() * 10) + 1;</code>
       <h3>Enemy attack damage</h3>
       <p>The enemy's attack damage is a range that changes based on the level of the enemy.
-        <br>The other elements that affect this are the blaster and shield which half and quarter this value.
+        <br>The other elements that affect this are the blaster and shield abilities.
       </p>
-      <code>player_dmg = Math.round(Math.random() * 15) + 3 * lvl;</code>
-      <br>
-      <code>function shield() { ... player_dmg = Math.round(((Math.random() * 15) + 3 * lvl) / 4); ... }</code>
-      <br>
-      <code>function blaster() { ... player_dmg = Math.round(((Math.random() * 15) + 3 * lvl) / 2); ... }</code>
       <h3>Enemy accuracy</h3>
-      <p>The enemy's accuracy is a fixed percentage of 60%. The only exception is with the blaster ability, which decreases it to 40%.
+      <p>The enemy's accuracy is a function of their level, such that:<br>
+        <code>accuracy = -(lvl/12) + 1</code><br>
+        Excepting, of course, the blaster ability, which alters it to:<br>
+        <code>accuracy = -(lvl/24) + 0.6</code>
       </p>
-      <code>var ai_attack = Math.random(); if (ai_attack > 0.4) { ... }</code>
-      <br>
-      <code>function blaster() { ... var ai_attack = Math.random(); if (ai_attack > 0.6) { ... } ... }</code>
       <h3>Score</h3>
       <p>Your score is the sum of the levels of all the enemies you defeat.
       </p>
@@ -160,6 +165,6 @@
       <br>For commercial purposes, please <a href="mailto:j.alfahad@gmail.com">contact Jacob Alfahad</a>.
       <br>All data saved on this site (your score and username, only when you permit) are non-identifiable and are not shared with any third-party.
     </p>
-    <footer><em>&copy; 2019 Jacob Alfahad</em></footer>
+    <footer><em>&copy; 2020 Jacob Alfahad</em></footer>
   </body>
 </html>

@@ -65,7 +65,7 @@ function sword() {
     return;
   }
   var ai_attack = Math.random();
-  if (ai_attack > 0.4) {
+  if (ai_attack < (-lvl/12)+1) {
     player_dmg = Math.round(Math.random() * 15) + 3 * lvl;
     health_pts -= player_dmg;
   }
@@ -85,7 +85,7 @@ function shield() {
     return;
   }
   var ai_attack = Math.random();
-  if (ai_attack > 0.4) {
+  if (ai_attack < (-lvl/12)+1) {
     player_dmg = Math.round(((Math.random() * 15) + 3 * lvl) / 4);
     health_pts -= player_dmg;
   }
@@ -104,7 +104,7 @@ function blaster() {
     return;
   }
   var ai_attack = Math.random();
-  if (ai_attack > 0.6) {
+  if (ai_attack < (-lvl/24)+0.6) {
     player_dmg = Math.round(((Math.random() * 15) + 3 * lvl) / 2);
     health_pts -= player_dmg;
   }
@@ -163,8 +163,8 @@ function check() {
     else {
       health_pts = 100;
     }
-    if (energy_pts <= 60) {
-      energy_pts += 40;
+    if (energy_pts <= 40) {
+      energy_pts += 60;
     }
     else {
       energy_pts = 100;

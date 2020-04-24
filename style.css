@@ -1,7 +1,9 @@
 /* GENERAL */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 body {
   overflow-x: hidden;
-  background-color: lightgrey
+  background-color: lightgrey;
+  font-family: Roboto, Arial, sans-serif;
 }
 body {
   margin: 0;
