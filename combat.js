@@ -187,7 +187,7 @@ function check() {
       hiddenElement.download = 'score-' + date + '.html';
       hiddenElement.click();
     }
-    else { location.reload(); }
+    location.reload();
   }
   else {}
 }
